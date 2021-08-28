@@ -33,12 +33,8 @@ const items = loot.reduce((slots, bag, index) => {
   Object.keys(bagSlots).forEach((slot) => {
     const item = bagSlots[slot];
     const itemPart = parseItemParts(bagSlots);
-
     itemParts.push({ [id]: itemPart });
-    itemScore += Object.keys(itemPart).reduce(
-      (acc, cur) => acc + itemPart[cur].score,
-      0
-    );
+    itemScore += itemPart[slot].score;
 
     if (!slots[slot].includes(item)) {
       slots[slot] = [...slots[slot], item];
@@ -66,8 +62,7 @@ function parseItemParts(item) {
       bonus: name.includes("+1"),
     };
     if (acc[slot].suffix) score++;
-    if (acc[slot].namePrefix) score++;
-    if (acc[slot].namePrefix) score++;
+    if (name.startsWith('"')) score += 2;
     if (acc[slot].bonus) score++;
 
     acc[slot].score = score;
