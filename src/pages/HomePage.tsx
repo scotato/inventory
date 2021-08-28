@@ -59,7 +59,9 @@ function HomePage() {
         onChange={(e) => setAddress(e.target.value)}
         placeholder="Address"
       />
+
       <ShareAdventurer address={address} />
+
       {loading && <p style={style.subtitle}>Loading...</p>}
 
       {error && <pre style={style.error}>{JSON.stringify(error, null, 2)}</pre>}

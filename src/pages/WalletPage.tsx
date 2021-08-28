@@ -1,4 +1,4 @@
-import { Key } from "react";
+import { useState, Key } from "react";
 import { useParams } from "react-router-dom";
 import { colors } from "../helpers/theme";
 import Bag from "../components/Bag";
@@ -50,19 +50,22 @@ const style = {
 };
 
 function WalletPage() {
-  const { address } = useParams<WalletPageParams>();
+  const params = useParams<WalletPageParams>();
+  const [address, setAddress] = useState(params.address);
   const { data, loading, error } = useWallet(address);
-
-  if (error)
-    return <pre style={style.page}>{JSON.stringify(error, null, 2)}</pre>;
-
-  if (loading) return <div style={style.page}>loading...</div>;
 
   return (
     <div style={style.page}>
-      <h1 style={style.title}>Adventurer</h1>
-      <p style={style.subtitle}>{address}</p>
+      <h1 style={style.title}>Inventory</h1>
+      <input
+        style={style.input}
+        value={address}
+        onChange={(e) => setAddress(e.target.value)}
+        placeholder="Address"
+      />
+
       <ShareAdventurer address={address} />
+
       {loading && <p style={style.subtitle}>Loading...</p>}
 
       {error && <pre style={style.error}>{JSON.stringify(error, null, 2)}</pre>}
