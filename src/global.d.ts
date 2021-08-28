@@ -1,20 +1,24 @@
 type Bag = {
-  chest: String
-  foot: String
-  hand: String
-  head: String
   id: String
   minted: String
+  currentOwner: Wallet
+  weapon: String
+  chest: String
+  head: String
+  waist: String
+  foot: String
+  hand: String
   neck: String
   ring: String
-  currentOwner: Wallet
 }
 
 type ItemSlots = {
+  weapon: String
   chest: String
+  head: String
+  waist: String
   foot: String
   hand: String
-  head: String
   neck: String
   ring: String
 }
