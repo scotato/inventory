@@ -31,5 +31,5 @@ const items = loot.reduce((slots, bag, index) => {
 // Output items
 fs.writeFileSync(
   "data/items.json",
-  JSON.stringify(items)
+  JSON.stringify(items, null, 2)
 );
