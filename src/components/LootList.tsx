@@ -1,8 +1,6 @@
-import useLoot from './use-loot'
+import useLoot from '../hooks/use-loot'
 
-const style = {
-  padding: 64
-}
+const style = {}
 
 function LootList() {
   const { data, loading, error } = useLoot()
