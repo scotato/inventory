@@ -1,4 +1,6 @@
+import { Key } from 'react'
 import { useParams } from "react-router-dom"
+import Bag from '../components/Bag'
 import useWallet from '../hooks/use-wallet'
 
 interface WalletPageParams {
@@ -21,7 +23,7 @@ function WalletPage() {
 
   return (
     <div style={style}>
-      <pre>{ JSON.stringify(data, null, 2) }</pre>
+      {data.wallet?.bags.map(bag => <Bag key={bag.id as Key} bag={bag} />)}
     </div>
   );
 }
