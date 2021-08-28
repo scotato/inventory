@@ -14,15 +14,12 @@ const itemCount = {
   ring: 0,
   waist: 0,
   weapon: 0,
-}
+};
 
 const itemsCounted = Object.keys(items).reduce((acc, key) => {
-  acc[key] = items[key].length
-  return acc
-}, itemCount)
+  acc[key] = items[key].length;
+  return acc;
+}, itemCount);
 
 // Output items
-fs.writeFileSync(
-  "data/item-count.json",
-  JSON.stringify(itemsCounted, null, 2)
-);
+fs.writeFileSync("data/item-count.json", JSON.stringify(itemsCounted, null, 2));
