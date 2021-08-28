@@ -1,6 +1,7 @@
 import { useState, Key } from "react";
 import { colors } from "../helpers/theme";
 import Bag from "../components/Bag";
+import ShareAdventurer from "../components/ShareAdventurer";
 import useWallet from "../hooks/use-wallet";
 
 const DEMO_ADDRESS = "0xC6c41119Af1e0840357245c66baAf0e21B694D4d";
@@ -58,6 +59,7 @@ function HomePage() {
         onChange={(e) => setAddress(e.target.value)}
         placeholder="Address"
       />
+      <ShareAdventurer address={address} />
       {loading && <p style={style.subtitle}>Loading...</p>}
 
       {error && <pre style={style.error}>{JSON.stringify(error, null, 2)}</pre>}
