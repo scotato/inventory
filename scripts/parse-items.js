@@ -62,7 +62,7 @@ function parseItemParts(item) {
       bonus: name.includes("+1"),
     };
     if (acc[slot].suffix) score++;
-    if (name.startsWith('"')) score += 2;
+    if (name.startsWith('"')) score++;
     if (acc[slot].bonus) score++;
 
     acc[slot].score = score;

@@ -51,7 +51,7 @@ function HomePage() {
 
   return (
     <div style={style.page}>
-      <h1 style={style.title}>Adventurer</h1>
+      <h1 style={style.title}>Inventory</h1>
       <input
         style={style.input}
         value={address}

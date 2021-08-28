@@ -15,7 +15,7 @@ export function parseItemParts(item) {
     };
     let score = 1;
     if (acc[slot].suffix) score++;
-    if (name.startsWith('"')) score += 2;
+    if (name.startsWith('"')) score++;
     if (acc[slot].bonus) score++;
 
     acc[slot].score = score;
