@@ -1,23 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
 
 body {
   margin: 0;
   padding: 0;
-  background: black;
+  background: hsl(0deg 0% 10%);
   color: white;
   min-height: 100%;
-  font-family: 'EB Garamond', serif,
-    sans-serif;
+  font-family: "EB Garamond", serif, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-a, p {
+a,
+p {
   margin-top: 0;
   margin-bottom: 1em;
 }

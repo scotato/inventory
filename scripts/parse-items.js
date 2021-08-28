@@ -13,8 +13,8 @@ const inventorySlots = {
 };
 
 // Load data
-const dataLoot = fs.readFileSync("data/loot.json");
-const dataParts = fs.readFileSync("data/item-parts.json");
+const dataLoot = fs.readFileSync("src/data/loot.json");
+const dataParts = fs.readFileSync("src/data/item-parts.json");
 const loot = JSON.parse(dataLoot);
 const parts = JSON.parse(dataParts);
 const { suffixes, namePrefixes, nameSuffixes } = parts;
@@ -38,15 +38,21 @@ const items = loot.reduce((slots, bag, index) => {
 
 function parseItemParts(item) {
   return Object.keys(item).reduce((acc, slot) => {
+    let score = 1;
     const name = item[slot];
+
     acc[slot] = {
       item: findItemType(name, parts),
       suffix: suffixes.find((suffix) => name.includes(suffix)) || null,
       namePrefix: namePrefixes.find((prefix) => name.includes(prefix)) || null,
       nameSuffix: nameSuffixes.find((suffix) => name.includes(suffix)) || null,
-      bonus: slot.includes("+1"),
+      bonus: name.includes("+1"),
     };
+    if (acc[slot].suffix) score++;
+    if (acc[slot].namePrefix) score++;
+    if (acc[slot].bonus) score++;
 
+    acc[slot].score = score;
     return acc;
   }, {});
 }
@@ -72,5 +78,8 @@ function findItemType(item, parts) {
 }
 
 // Output items
-fs.writeFileSync("data/items.json", JSON.stringify(items, null, 2));
-fs.writeFileSync("data/loot-parts.json", JSON.stringify(itemParts, null, 2));
+fs.writeFileSync("src/data/items.json", JSON.stringify(items, null, 2));
+fs.writeFileSync(
+  "src/data/loot-parts.json",
+  JSON.stringify(itemParts, null, 2)
+);

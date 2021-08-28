@@ -3,7 +3,7 @@ const fs = require("fs");
 
 (async () => {
   // Load loot data
-  const data = await fs.readFileSync("data/loot.json");
+  const data = await fs.readFileSync("src/data/loot.json");
   const loot = JSON.parse(data);
 
   // Calculate attribute rarities
@@ -20,7 +20,10 @@ const fs = require("fs");
   }
 
   // Output occurences
-  await fs.writeFileSync("data/occurences.json", JSON.stringify(rarityIndex));
+  await fs.writeFileSync(
+    "src/data/occurences.json",
+    JSON.stringify(rarityIndex)
+  );
 
   // Calculate occurence scores
   let scores = [];

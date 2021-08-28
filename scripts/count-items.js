@@ -2,7 +2,7 @@
 const fs = require("fs");
 
 // Load data
-const dataItems = fs.readFileSync("data/items.json");
+const dataItems = fs.readFileSync("src/data/items.json");
 const items = JSON.parse(dataItems);
 
 const itemCount = {
@@ -22,4 +22,7 @@ const itemsCounted = Object.keys(items).reduce((acc, key) => {
 }, itemCount);
 
 // Output items
-fs.writeFileSync("data/item-count.json", JSON.stringify(itemsCounted, null, 2));
+fs.writeFileSync(
+  "src/data/item-count.json",
+  JSON.stringify(itemsCounted, null, 2)
+);

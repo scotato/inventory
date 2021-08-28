@@ -10,6 +10,26 @@ type Bag = {
   currentOwner: Wallet
 }
 
+type ItemSlots = {
+  chest: String
+  foot: String
+  hand: String
+  head: String
+  neck: String
+  ring: String
+}
+
+type Item = {
+  slot: String
+  name: String
+  item: String
+  suffix?: String
+  namePrefix?: String
+  nameSuffix?: String
+  bonus: Boolean
+  score: number
+}
+
 type Wallet = {
   id: String
   address: String
