@@ -17,6 +17,8 @@ const style = {
   },
   bags: {
     display: "grid",
+    justifyContent: "flex-start",
+    alignItem: "flex-start",
     gridRowGap: 16,
     gridColumnGap: 16,
     gridTemplateColumns: "repeat(auto-fill, minmax(512px, 1fr))",

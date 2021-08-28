@@ -1,16 +1,34 @@
 import { useRef } from "react";
 import useMeasure from "use-measure";
+import rarities from "../data/rare.json";
+import { colors } from "../helpers/theme";
 import { parseItemParts } from "../helpers/item";
 import Item from "./Item";
+
+const ENDPOINT =
+  "https://opensea.io/assets/0xff9c1b15b16263c61d017ee9f65c50e4ae0113d7/";
 interface BagProps {
   bag: Bag;
 }
 
 const style = {
-  padding: 16,
-  background: "black",
-  width: 512,
-  maxWidth: "100%",
+  container: {
+    margin: 16,
+  },
+  bag: {
+    padding: 16,
+    background: "black",
+    width: 512,
+    maxWidth: "100%",
+  },
+  link: {
+    color: colors.muted,
+    textDecoration: "none",
+  },
+  footer: {
+    padding: 16,
+    color: colors.muted,
+  },
 };
 
 function Bag({ bag }: BagProps) {
@@ -22,14 +40,26 @@ function Bag({ bag }: BagProps) {
   };
 
   return (
-    <div style={{ ...style, height: width }} ref={ref}>
-      {Object.keys(itemsSlotted)
-        .sort(byOrder)
-        .map((slot) => {
-          const key = slot as keyof typeof Item;
-          const item = itemsSlotted[key];
-          return <Item item={item} key={slot} />;
-        })}
+    <div style={style.container}>
+      <div style={{ ...style.bag, height: width }} ref={ref}>
+        {Object.keys(itemsSlotted)
+          .sort(byOrder)
+          .map((slot) => {
+            const key = slot as keyof typeof Item;
+            const item = itemsSlotted[key];
+            return <Item item={item} key={slot} />;
+          })}
+      </div>
+      <div style={style.footer}>
+        <a
+          style={style.link}
+          href={`${ENDPOINT}/${bag.id}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          #{bag.id}
+        </a>
+      </div>
     </div>
   );
 }
@@ -52,5 +82,7 @@ function byOrder(a: string, b: string) {
   if (aIndex < bIndex) return -1;
   return 0;
 }
+
+function getScore(item: Item) {}
 
 export default Bag;

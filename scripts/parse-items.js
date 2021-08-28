@@ -13,26 +13,43 @@ const inventorySlots = {
 };
 
 // Load data
+const dataRare = fs.readFileSync("src/data/rare.json");
 const dataLoot = fs.readFileSync("src/data/loot.json");
 const dataParts = fs.readFileSync("src/data/item-parts.json");
+const rare = JSON.parse(dataRare);
 const loot = JSON.parse(dataLoot);
 const parts = JSON.parse(dataParts);
 const { suffixes, namePrefixes, nameSuffixes } = parts;
+let rareUpdate = [];
 
 // Add item to inventory slot list if it's not already there
 const itemParts = [];
 const items = loot.reduce((slots, bag, index) => {
+  let itemScore = 0;
   const id = index + 1;
   const bagSlots = bag[id];
+  const existingRarity = rare.find((item) => item.lootId === id);
+
   Object.keys(bagSlots).forEach((slot) => {
     const item = bagSlots[slot];
+    const itemPart = parseItemParts(bagSlots);
 
-    itemParts.push({ [id]: parseItemParts(bagSlots) });
+    itemParts.push({ [id]: itemPart });
+    itemScore += Object.keys(itemPart).reduce(
+      (acc, cur) => acc + itemPart[cur].score,
+      0
+    );
 
     if (!slots[slot].includes(item)) {
       slots[slot] = [...slots[slot], item];
     }
   });
+
+  rareUpdate.push({
+    ...existingRarity,
+    itemScore,
+  });
+
   return slots;
 }, inventorySlots);
 
@@ -49,6 +66,7 @@ function parseItemParts(item) {
       bonus: name.includes("+1"),
     };
     if (acc[slot].suffix) score++;
+    if (acc[slot].namePrefix) score++;
     if (acc[slot].namePrefix) score++;
     if (acc[slot].bonus) score++;
 
@@ -78,6 +96,7 @@ function findItemType(item, parts) {
 }
 
 // Output items
+fs.writeFileSync("src/data/rare.json", JSON.stringify(rareUpdate, null, 2));
 fs.writeFileSync("src/data/items.json", JSON.stringify(items, null, 2));
 fs.writeFileSync(
   "src/data/loot-parts.json",

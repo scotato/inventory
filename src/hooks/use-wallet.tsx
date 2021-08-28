@@ -38,15 +38,19 @@ function useWallet(address: string): WalletQuery {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const startLoading = () => setLoading(true);
   const stopLoading = () => setLoading(false);
+  const clearError = () => setError("");
 
   useEffect(() => {
     if (!address) setError("No address provided");
+    startLoading();
     request(SUBGRAPH, walletQuery, {
       id: address.toLowerCase(),
     })
       .then(setData)
       .then(stopLoading)
+      .then(clearError)
       .catch(setError);
   }, [address]);
 
