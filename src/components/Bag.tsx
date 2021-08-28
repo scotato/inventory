@@ -3,9 +3,7 @@ interface BagProps {
 }
 
 const style = {
-  margin: '0 auto',
-  padding: 64,
-  maxWidth: 800
+  padding: "16px 0",
 }
 
 function Bag({ bag }: BagProps) {
