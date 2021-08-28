@@ -30,7 +30,6 @@ const style = {
     padding: 8,
     background: "black",
     color: colors.muted,
-    width: "100%",
     maxWidth: 512,
     border: 0,
   },

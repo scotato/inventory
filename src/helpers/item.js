@@ -16,6 +16,7 @@ export function parseItemParts(item) {
     let score = 1;
     if (acc[slot].suffix) score++;
     if (acc[slot].namePrefix) score++;
+    if (acc[slot].nameSuffix) score++;
     if (acc[slot].bonus) score++;
 
     acc[slot].score = score;

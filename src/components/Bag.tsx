@@ -14,18 +14,22 @@ interface BagProps {
 const style = {
   container: {
     margin: 16,
+    width: "100%",
+    maxWidth: 512,
   },
   bag: {
     padding: 16,
     background: "black",
-    width: 512,
-    maxWidth: "100%",
   },
   link: {
     color: colors.muted,
     textDecoration: "none",
   },
+  score: {
+    margin: "0 8px",
+  },
   footer: {
+    display: "flex",
     padding: 16,
     color: colors.muted,
   },
@@ -38,10 +42,11 @@ function Bag({ bag }: BagProps) {
   const itemsSlotted = parseItemParts(items) as {
     [key: string]: Item;
   };
+  const scores = rarities.find((loot) => loot.lootId === Number(bag.id));
 
   return (
     <div style={style.container}>
-      <div style={{ ...style.bag, height: width }} ref={ref}>
+      <div style={{ ...style.bag, height: width }} ref={ref} className="bag">
         {Object.keys(itemsSlotted)
           .sort(byOrder)
           .map((slot) => {
@@ -59,6 +64,9 @@ function Bag({ bag }: BagProps) {
         >
           #{bag.id}
         </a>
+        <p style={style.score}>Rarest: {scores?.rarest}</p>
+        <p style={style.score}>Item Score: {scores?.itemScore}</p>
+        <p style={style.score}>Score: {scores?.score}</p>
       </div>
     </div>
   );
@@ -82,7 +90,5 @@ function byOrder(a: string, b: string) {
   if (aIndex < bIndex) return -1;
   return 0;
 }
-
-function getScore(item: Item) {}
 
 export default Bag;

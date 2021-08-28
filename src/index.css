@@ -25,3 +25,13 @@ p {
 * {
   box-sizing: border-box;
 }
+
+@media only screen and (max-width: 420px) {
+  .app-layout {
+    padding: 16px 8px !important;
+  }
+
+  .bag {
+    height: auto !important;
+  }
+}
