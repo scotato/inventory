@@ -25,24 +25,6 @@ const bagsQuery = gql`
   }
 `
 
-type Bag = {
-  chest: String
-  foot: String
-  hand: String
-  head: String
-  id: String
-  minted: String
-  neck: String
-  ring: String
-  currentOwner: Adventurer
-}
-
-type Adventurer = {
-  address: String
-  bagsHeld: String
-  joined: String
-}
-
 type BagsQuery = {
   data: {
     bags?: Bag[]
