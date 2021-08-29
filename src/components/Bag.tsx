@@ -38,7 +38,7 @@ function Bag({ bag }: BagProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { width } = useMeasure(ref);
   const scores = rarities.find((loot) => loot.lootId === Number(bag.id));
-  console.log(bag);
+  const itemScore = bag.items.reduce((score, item) => item.rarity + score, 0);
 
   return (
     <div style={style.container}>
@@ -61,12 +61,16 @@ function Bag({ bag }: BagProps) {
         >
           #{bag.id}
         </a>
-        <p style={style.score}>Rarest: {scores?.rarest}</p>
-        <p style={style.score}>Item Score: {scores?.itemScore}</p>
-        <p style={style.score}>Score: {scores?.score}</p>
+        <p style={style.score}>Rank: {scores?.rarest}</p>
+        <p style={style.score}>Top: {getRarityPercentage(scores?.rarest)}%</p>
+        <p style={style.score}>Item Score: {itemScore}</p>
       </div>
     </div>
   );
+}
+
+function getRarityPercentage(rank = 8000) {
+  return ((rank / 8000) * 100).toFixed(0);
 }
 
 const slotOrder = [
