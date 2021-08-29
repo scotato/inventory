@@ -74,7 +74,7 @@ function HelpPage() {
       <ul>
         <li>
           <a
-            href="https://twitter.com/lootproject"
+            href="https://github.com/scotato/inventory"
             style={style.link}
             target="_blank"
             rel="noreferrer"
