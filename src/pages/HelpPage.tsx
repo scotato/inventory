@@ -41,27 +41,27 @@ function HelpPage() {
       <ul>
         <li>
           <span style={style.common}>Common</span> items have 300 or more
-          occurences with a rarity of 1.
+          occurrences with a rarity of 1.
         </li>
         <li>
           <span style={style.uncommon}>Uncommon</span> items have between 50 and
-          300 occurences with a rarity of 2.
+          300 occurrences with a rarity of 2.
         </li>
         <li>
           <span style={style.rare}>Rare</span> items have between 25 and 50
-          occurences with a rarity of 3.
+          occurrences with a rarity of 3.
         </li>
         <li>
           <span style={style.epic}>Epic</span> items have between 10 and 25
-          occurences with a rarity of 4.
+          occurrences with a rarity of 4.
         </li>
         <li>
           <span style={style.legendary}>Legendary</span> items have between 2
-          and 10 occurences with a rarity of 5.
+          and 10 occurrences with a rarity of 5.
         </li>
         <li>
-          <span style={style.mythic}>Mythic</span> items have a single occurence
-          with a rarity of 6.
+          <span style={style.mythic}>Mythic</span> items have a single
+          occurrence with a rarity of 6.
         </li>
       </ul>
 
