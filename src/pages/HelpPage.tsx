@@ -5,6 +5,7 @@ const style = {
   page: {
     display: "flex",
     flexDirection: "column" as "column",
+    maxWidth: 800,
     paddingLeft: 16,
     paddingRight: 16,
   },
@@ -68,6 +69,15 @@ function HelpPage() {
       <p>
         Item Score is calculated by adding the rarity value of all items in a
         bag.
+      </p>
+
+      <h2>Bag Rank</h2>
+      <br />
+      <p>
+        Bag Rank is based on the sum of the occurrence rarity of all of the
+        items in a bag, Item Score groups items into the six categories above,
+        because of this grouping it is possible for one bag to have a better
+        Item Score but lower Bag Rank than another bag.
       </p>
 
       <h2>Resources</h2>
