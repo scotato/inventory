@@ -21,11 +21,12 @@ const style = {
     background: "black",
   },
   link: {
+    marginRight: 12,
     color: colors.muted,
     textDecoration: "none",
   },
   score: {
-    margin: "0 8px",
+    marginRight: 12,
   },
   footer: {
     display: "flex",
@@ -52,7 +53,7 @@ function Bag({ bag }: BagProps) {
             return <Item item={item} key={slot as Key} />;
           })}
       </div>
-      <div style={style.footer}>
+      <div style={style.footer} className="bag-footer">
         <a
           style={style.link}
           href={`${ENDPOINT}/${bag.id}`}

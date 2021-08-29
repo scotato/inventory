@@ -16,14 +16,12 @@ const style = {
     marginRight: 16,
     marginBottom: 0,
   },
-  subtitle: {
-    marginLeft: 16,
-    marginRight: 16,
-    opacity: 0.5,
+  loading: {
+    margin: 16,
+    color: colors.muted,
   },
   error: {
-    marginLeft: 16,
-    marginRight: 16,
+    margin: 16,
     color: colors.red,
   },
   input: {
@@ -37,12 +35,6 @@ const style = {
   bags: {
     display: "flex",
     flexWrap: "wrap" as "wrap",
-  },
-  link: {
-    color: colors.muted,
-    textDecoration: "none",
-    marginLeft: 32,
-    marginRight: 32,
   },
 };
 
@@ -62,23 +54,15 @@ function HomePage() {
 
       <ShareAdventurer address={address} />
 
-      {loading && <p style={style.subtitle}>Loading...</p>}
+      {loading && <p style={style.loading}>Loading...</p>}
 
-      {error && <pre style={style.error}>{JSON.stringify(error, null, 2)}</pre>}
+      {error && <p style={style.error}>{error}</p>}
 
       <div style={style.bags}>
         {data.wallet?.bags.map((bag) => (
           <Bag key={bag.id as Key} bag={bag} />
         ))}
       </div>
-      <a
-        href="https://github.com/scotato/inventory"
-        target="_blank"
-        style={style.link}
-        rel="noreferrer"
-      >
-        GitHub
-      </a>
     </div>
   );
 }

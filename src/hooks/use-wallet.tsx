@@ -50,7 +50,16 @@ function useWallet(address: string): WalletQuery {
   const clearError = () => setError("");
 
   useEffect(() => {
-    if (!address) setError("No address provided");
+    if (!address) {
+      setData({});
+      return setError("No address provided");
+    }
+
+    if (address.length !== 42) {
+      setData({});
+      return setError("Invalid address");
+    }
+
     startLoading();
     request(SUBGRAPH, walletQuery, {
       id: address.toLowerCase(),
@@ -60,7 +69,7 @@ function useWallet(address: string): WalletQuery {
       .then(stopLoading)
       .then(clearError)
       .catch((err) => {
-        setError(err);
+        setError(err.message);
         stopLoading();
       });
   }, [address]);
@@ -82,6 +91,9 @@ const itemKeys = [
 async function addItemRarity({ wallet }: { wallet: Wallet }) {
   // for each bag, add item rarities
   const bags = [];
+
+  if (!wallet) throw new Error("No bags found at this address");
+
   for (const bag of wallet.bags) {
     const items = [];
     for (const itemKey of itemKeys) {

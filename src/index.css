@@ -26,12 +26,23 @@ p {
   box-sizing: border-box;
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 600px) {
   .app-layout {
     padding: 16px 8px !important;
   }
 
   .bag {
     height: auto !important;
+    padding-bottom: 50% !important;
+  }
+
+  .legend {
+    grid-auto-flow: row !important;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .bag-footer {
+    flex-direction: column !important;
   }
 }

@@ -41,12 +41,6 @@ const style = {
     display: "flex",
     flexWrap: "wrap" as "wrap",
   },
-  link: {
-    color: colors.muted,
-    textDecoration: "none",
-    marginLeft: 32,
-    marginRight: 32,
-  },
 };
 
 function WalletPage() {
@@ -75,14 +69,6 @@ function WalletPage() {
           <Bag key={bag.id as Key} bag={bag} />
         ))}
       </div>
-      <a
-        href="https://github.com/scotato/inventory"
-        target="_blank"
-        style={style.link}
-        rel="noreferrer"
-      >
-        GitHub
-      </a>
     </div>
   );
 }
