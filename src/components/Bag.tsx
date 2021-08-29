@@ -1,8 +1,7 @@
-import { useRef } from "react";
+import { useRef, Key } from "react";
 import useMeasure from "use-measure";
 import rarities from "../data/rare.json";
 import { colors } from "../helpers/theme";
-import { parseItemParts } from "../helpers/item";
 import Item from "./Item";
 
 const ENDPOINT =
@@ -38,21 +37,19 @@ const style = {
 function Bag({ bag }: BagProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { width } = useMeasure(ref);
-  const { id, minted, ...items } = bag;
-  const itemsSlotted = parseItemParts(items) as {
-    [key: string]: Item;
-  };
   const scores = rarities.find((loot) => loot.lootId === Number(bag.id));
+  console.log(bag);
 
   return (
     <div style={style.container}>
       <div style={{ ...style.bag, height: width }} ref={ref} className="bag">
-        {Object.keys(itemsSlotted)
+        {bag.items
+          .map((item) => item.slot)
           .sort(byOrder)
           .map((slot) => {
             const key = slot as keyof typeof Item;
-            const item = itemsSlotted[key];
-            return <Item item={item} key={slot} />;
+            const item = bag.items.find((item) => item.slot === key);
+            return <Item item={item} key={slot as Key} />;
           })}
       </div>
       <div style={style.footer}>
@@ -83,9 +80,9 @@ const slotOrder = [
   "ring",
 ];
 
-function byOrder(a: string, b: string) {
-  const aIndex = slotOrder.indexOf(a);
-  const bIndex = slotOrder.indexOf(b);
+function byOrder(a: String, b: String) {
+  const aIndex = slotOrder.indexOf(a as string);
+  const bIndex = slotOrder.indexOf(b as string);
   if (aIndex > bIndex) return 1;
   if (aIndex < bIndex) return -1;
   return 0;

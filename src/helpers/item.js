@@ -1,5 +1,5 @@
 import parts from "../data/item-parts.json";
-const { suffixes, namePrefixes, nameSuffixes } = parts;
+export const { suffixes, namePrefixes, nameSuffixes } = parts;
 
 export function parseItemParts(item) {
   return Object.keys(item).reduce((acc, slot) => {
@@ -7,23 +7,17 @@ export function parseItemParts(item) {
     acc[slot] = {
       slot,
       name,
-      item: findItemType(name, parts),
+      item: findItemType(name),
       suffix: suffixes.find((suffix) => name.includes(suffix)) || null,
       namePrefix: namePrefixes.find((prefix) => name.includes(prefix)) || null,
       nameSuffix: nameSuffixes.find((suffix) => name.includes(suffix)) || null,
       bonus: name.includes("+1"),
     };
-    let score = 1;
-    if (acc[slot].suffix) score++;
-    if (name.startsWith('"')) score++;
-    if (acc[slot].bonus) score++;
-
-    acc[slot].score = score;
     return acc;
   }, {});
 }
 
-function findItemType(item, parts) {
+export function findItemType(item) {
   const hasPart = (part) => item.includes(part);
   const weapon = parts.weapons.filter(hasPart)[0];
   if (weapon) return weapon;

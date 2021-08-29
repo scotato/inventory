@@ -1,3 +1,5 @@
+type Rarity = 1 | 2 | 3 | 4 | 5 | 6;
+
 type Bag = {
   id: String
   minted: String
@@ -10,6 +12,7 @@ type Bag = {
   hand: String
   neck: String
   ring: String
+  items: Item[]
 }
 
 type ItemSlots = {
@@ -31,7 +34,7 @@ type Item = {
   namePrefix?: String
   nameSuffix?: String
   bonus: Boolean
-  score: number
+  rarity: Rarity
 }
 
 type Wallet = {

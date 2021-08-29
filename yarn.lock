@@ -7109,6 +7109,11 @@ loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3.1, loose-envify@^1.4
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
+loot-rarity@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/loot-rarity/-/loot-rarity-1.1.0.tgz#628703390a08369343dbea341f622bda61969200"
+  integrity sha512-mtbi9C/QgxhPXuHYxgLZxj2UGIjIh31gQ/Be0+0jSci4Q650InG+Pw77V1iBpY9bqdC3ivIMarRdkjCwVSS/SA==
+
 lower-case@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/lower-case/-/lower-case-2.0.2.tgz#6fa237c63dbdc4a82ca0fd882e4722dc5e634e28"

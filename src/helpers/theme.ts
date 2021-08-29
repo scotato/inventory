@@ -20,6 +20,8 @@ export const colors = {
 
 export function colorForScore(score: number) {
   switch (score) {
+    case 6:
+      return colors.mythic;
     case 5:
       return colors.legendary;
     case 4:
