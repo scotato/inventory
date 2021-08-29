@@ -5,7 +5,6 @@ interface ItemProps {
 }
 
 function Item({ item }: ItemProps) {
-  console.log("item", item);
   const style = {
     margin: 0,
     fontSize: 20,

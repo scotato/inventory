@@ -22,7 +22,7 @@ const style = {
   },
   link: {
     marginRight: 12,
-    color: colors.muted,
+    color: colors.white,
     textDecoration: "none",
   },
   score: {
@@ -42,7 +42,7 @@ function Bag({ bag }: BagProps) {
   const itemScore = bag.items.reduce((score, item) => item.rarity + score, 0);
 
   return (
-    <div style={style.container}>
+    <div style={style.container} className="bag-container">
       <div style={{ ...style.bag, height: width }} ref={ref} className="bag">
         {bag.items
           .map((item) => item.slot)
@@ -70,8 +70,12 @@ function Bag({ bag }: BagProps) {
   );
 }
 
+// show 2 decimals for top 0%
 function getRarityPercentage(rank = 8000) {
-  return ((rank / 8000) * 100).toFixed(0);
+  const percentage = (rank / 8000) * 100;
+  const percentageRounded = percentage.toFixed(0);
+  if (Number(percentageRounded)) return percentageRounded;
+  return percentage.toFixed(2);
 }
 
 const slotOrder = [

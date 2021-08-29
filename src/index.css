@@ -54,7 +54,7 @@ h6 {
 
   .bag {
     height: auto !important;
-    padding-bottom: 50% !important;
+    padding-bottom: 25% !important;
   }
 
   .legend {
@@ -65,5 +65,10 @@ h6 {
 @media only screen and (max-width: 400px) {
   .bag-footer {
     flex-direction: column !important;
+  }
+
+  .bag-container p,
+  .bag-container a {
+    margin-bottom: 8px;
   }
 }
