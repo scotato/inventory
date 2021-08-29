@@ -1,16 +1,20 @@
-import { colors } from "../helpers/theme";
+import { colors, styleLegend } from "../helpers/theme";
+import { Link } from "react-router-dom";
 
 const style = {
   app: {
+    display: "grid",
     margin: "0 auto",
     padding: 64,
     maxWidth: 1800,
+    minHeight: "100%",
+    gridTemplateRows: "1fr auto",
   },
   footer: {
     display: "flex",
     marginTop: 16,
-    marginLeft: 32,
-    marginRight: 32,
+    marginLeft: 16,
+    marginRight: 16,
     justifyContent: "space-between",
   },
 };
@@ -31,22 +35,16 @@ function Resources() {
   const style = {
     resources: {},
     link: {
-      justifySelf: "flex-end",
-      color: colors.muted,
+      color: colors.white,
       textDecoration: "none",
     },
   };
 
   return (
     <span style={style.resources}>
-      <a
-        href="https://github.com/scotato/inventory"
-        target="_blank"
-        style={style.link}
-        rel="noreferrer"
-      >
-        GitHub
-      </a>
+      <Link to="/help" style={style.link}>
+        Help
+      </Link>
     </span>
   );
 }
@@ -60,24 +58,7 @@ function Legend() {
       gridColumnGap: 12,
       gridRowGap: 12,
     },
-    common: {
-      color: colors.common,
-    },
-    uncommon: {
-      color: colors.uncommon,
-    },
-    rare: {
-      color: colors.rare,
-    },
-    epic: {
-      color: colors.epic,
-    },
-    legendary: {
-      color: colors.legendary,
-    },
-    mythic: {
-      color: colors.mythic,
-    },
+    ...styleLegend,
   };
 
   return (

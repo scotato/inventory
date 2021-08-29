@@ -6,6 +6,7 @@ body {
   background: hsl(0deg 0% 10%);
   color: white;
   min-height: 100%;
+  font-size: 20px;
   font-family: "EB Garamond", serif, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -24,6 +25,26 @@ p {
 
 * {
   box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0;
 }
 
 @media only screen and (max-width: 600px) {

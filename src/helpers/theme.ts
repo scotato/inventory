@@ -18,6 +18,27 @@ export const colors = {
   mythic: "#ff44b7",
 };
 
+export const styleLegend = {
+  common: {
+    color: colors.common,
+  },
+  uncommon: {
+    color: colors.uncommon,
+  },
+  rare: {
+    color: colors.rare,
+  },
+  epic: {
+    color: colors.epic,
+  },
+  legendary: {
+    color: colors.legendary,
+  },
+  mythic: {
+    color: colors.mythic,
+  },
+}
+
 export function colorForScore(score: number) {
   switch (score) {
     case 6:
