@@ -15,6 +15,11 @@ const style = {
   subtitle: {
     color: colors.muted,
   },
+  detail: {
+    marginLeft: 8,
+    color: colors.muted,
+    fontSize: 16,
+  },
   titleLink: {
     color: colors.white,
     textDecoration: "none",
@@ -41,36 +46,40 @@ function HelpPage() {
       <h2>Item Score</h2>
       <ul>
         <li>
-          <span style={style.common}>Common</span> items have 300 or more
-          occurrences with a rarity of 1.
+          <span style={style.common}>Common</span> items appear 375 or more
+          times with a rarity score of 1.{" "}
+          <span style={style.detail}>47.25% - 30,237 items</span>
         </li>
         <li>
-          <span style={style.uncommon}>Uncommon</span> items have between 50 and
-          300 occurrences with a rarity of 2.
+          <span style={style.uncommon}>Uncommon</span> items appear 374 or less
+          times with a rarity score of 2.{" "}
+          <span style={style.detail}>12.61% - 8,073 items</span>
         </li>
         <li>
-          <span style={style.rare}>Rare</span> items have between 25 and 50
-          occurrences with a rarity of 3.
+          <span style={style.rare}>Rare</span> items appear 357 or less times
+          with a rarity score of 3.{" "}
+          <span style={style.detail}>11.78% - 7,537 items</span>
         </li>
         <li>
-          <span style={style.epic}>Epic</span> items have between 10 and 25
-          occurrences with a rarity of 4.
+          <span style={style.epic}>Epic</span> items appear 100 or less times
+          with a rarity score of 4.{" "}
+          <span style={style.detail}>10.29% - 6,587 items</span>
         </li>
         <li>
-          <span style={style.legendary}>Legendary</span> items have between 2
-          and 10 occurrences with a rarity of 5.
+          <span style={style.legendary}>Legendary</span> items appear 9 or less
+          times with a rarity score of 5.{" "}
+          <span style={style.detail}>9.67% - 6,189 items</span>
         </li>
         <li>
-          <span style={style.mythic}>Mythic</span> items have a single
-          occurrence with a rarity of 6.
+          <span style={style.mythic}>Mythic</span> items appear exactly 1 time
+          with a rarity score of 6.{" "}
+          <span style={style.detail}>8.4% - 5,377 items</span>
         </li>
       </ul>
-
       <p>
-        Item Score is calculated by adding the rarity value of all items in a
+        Item Score is calculated by adding the rarity score of all items in a
         bag.
       </p>
-
       <h2>Bag Rank</h2>
       <br />
       <p>
@@ -79,7 +88,6 @@ function HelpPage() {
         because of this grouping it is possible for one bag to have a better
         Item Score but lower Bag Rank than another bag.
       </p>
-
       <h2>Resources</h2>
       <ul>
         <li>
@@ -113,7 +121,6 @@ function HelpPage() {
           </a>
         </li>
       </ul>
-
       <h2>Loot</h2>
       <ul>
         <li>
